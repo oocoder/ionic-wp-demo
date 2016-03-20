@@ -1,16 +1,19 @@
 // MAIN.JS - Webpack main entry file
 module.exports = (function(){
-    require('onsenui/css/onsenui.css');
-    require('onsenui/css/onsen-css-components-blue-basic-theme.css');    
-
+    require('ionic/ionic/css/ionic.css');
+    
+    require('ionic/ionic/js/ionic');
+    // require('ionic/ionic/js/angular');
+    // require('ionic/ionic/js/angular-ui');
     require('angular/angular');
-    require('onsenui/js/onsenui');
-    require('script!onsenui/js/angular-onsenui');
+    require('angular-animate/angular-animate');
+    require('angular-sanitize/angular-sanitize');
+    require('angular-ui-router');
+    require('ionic/ionic/js/ionic-angular');
 
     var angular = window.angular;
 
-    //global.angular.module('app', ['onsen', 'ngPensi', 'ngAnimate'])
-    angular.module('demo-app', ['onsen'])
+    angular.module('demo-app', ['ionic'])
     .controller('TaskViewCtrl', ['$scope', function($scope){
         return {
             refresh : function(){
@@ -27,6 +30,8 @@ module.exports = (function(){
         };
     }]);
     
-    angular.bootstrap(document, ['demo-app']);
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ['demo-app']);
+    });
 
 })();

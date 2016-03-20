@@ -1,6 +1,7 @@
 var path = require('path');
 var srcPath = path.resolve('src');
 var outputPath = path.resolve('public');
+var webpack = require('webpack');
 
 module.exports = {
     context: srcPath,
@@ -25,5 +26,8 @@ module.exports = {
             { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file?name=assets/[hash].[ext]" }
               
         ]
-    }    
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}})
+    ]
 };
